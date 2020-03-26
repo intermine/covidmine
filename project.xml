@@ -2,9 +2,12 @@
   <property name="target.model" value="genomic"/>
   <property name="common.os.prefix" value="common"/>
   <sources>
-
-
-
+    <source name="daily-reports" type="gisaid-csv">
+      <property name="dataSourceName" value="GISAID"/>
+      <property name="dataSetTitle" value="GISAID Daily Reports"/>
+      <property name="src.data.dir" location="/micklem/data/covid/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"/>
+      <property name="src.data.dir.includes" value="*.csv"/>
+    </source>
   </sources>
 
   <post-processing>
