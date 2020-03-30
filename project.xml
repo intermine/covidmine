@@ -8,15 +8,13 @@
       <property name="organisms" value="9606"/>
 -->    
 
-<source name="covid-gff" type="gff">
+    <source name="covid-gff" type="gff">
       <property name="gff3.taxonId" value="2697049"/>
       <property name="gff3.seqClsName" value="Strain"/>
       <property name="reactome.datasourcename" value="NCBI"/>
       <property name="gff3.dataSetTitle" value="Reference Sequence"/>
-      <property name="src.data.dir"
-                location="/micklem/data/covid/gff/"/>
+      <property name="src.data.dir" location="/micklem/data/covid/gff/"/>
     </source>
-
 
     <source name="uniprot" type="uniprot">
       <property name="uniprot.organisms" value="2697049"/>
@@ -36,8 +34,7 @@
                 value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
     </source>
 
-
-  <source name="covid-fasta" type="fasta">
+    <source name="covid-fasta" type="fasta">
       <property name="fasta.taxonId" value="2697049"/>
       <property name="fasta.dataSetTitle" value="NCBI covid"/>
       <property name="fasta.dataSourceName" value="NCBI"/>
@@ -45,6 +42,13 @@
       <property name="fasta.classAttribute" value="primaryIdentifier"/>
       <property name="fasta.includes" value="ncbi.fasta"/>
       <property name="src.data.dir" location="/micklem/data/covid/fasta"/>
+    </source>
+
+    <source name="daily-reports" type="gisaid-csv">
+      <property name="dataSourceName" value="GISAID"/>
+      <property name="dataSetTitle" value="GISAID Daily Reports"/>
+      <property name="src.data.dir" location="/micklem/data/covid/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"/>
+      <property name="src.data.dir.includes" value="*.csv"/>
     </source>
 
 
@@ -57,7 +61,7 @@
      <property name="osAlias" value="os.production"/>
     </source>
 -->
-<source name="so" type="so">
+    <source name="so" type="so">
       <property name="src.data.file" location="so.obo"/>
     </source>
     <source name="go" type="go">
@@ -73,7 +77,7 @@
       <property name="src.data.dir" location="/micklem/data/interpro/ontology/current"/>
     </source>
 
-   <source name="entrez-organism" type="entrez-organism">
+    <source name="entrez-organism" type="entrez-organism">
       <property name="src.data.file" location="organisms.xml"/>
     </source>
 <!--
@@ -86,7 +90,7 @@
       <property name="dataSourceFile" value="/micklem/data/uniprot/xrefs/current/dbxref.txt"/>
     </source>
 -->
-   <source name="update-publications" type="update-publications" dump="true">
+    <source name="update-publications" type="update-publications" dump="true">
       <property name="src.data.file" location="publications.xml"/>
       <property name="loadFullRecord" value="true"/>
     </source>
@@ -94,7 +98,6 @@
   </sources>
 
   <post-processing>
-
   <post-process name="create-utr-references"/>
     <post-process name="create-references" />
     <post-process name="make-spanning-locations"/>
@@ -109,7 +112,6 @@
     <post-process name="summarise-objectstore"/>
     <post-process name="create-autocomplete-index"/>
     <post-process name="create-search-index"/>
-
   </post-processing>
 
 </project>
