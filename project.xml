@@ -90,7 +90,7 @@
       <property name="dataSourceFile" value="/micklem/data/uniprot/xrefs/current/dbxref.txt"/>
     </source>
 -->
-    <source name="update-publications" type="update-publications" dump="true">
+    <source name="update-publications" type="update-publications">
       <property name="src.data.file" location="publications.xml"/>
       <property name="loadFullRecord" value="true"/>
     </source>
