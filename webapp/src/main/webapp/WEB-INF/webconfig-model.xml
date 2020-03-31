@@ -46,7 +46,17 @@
     <tabledisplayer src="/model/dataSourceShort.jsp"/>
   </class>
 
-  <class className="org.intermine.model.bio.Gene">
+  <class className="org.intermine.model.bio.Distribution">
+    <fields>
+        <fieldconfig fieldExpr="confirmed" />
+        <fieldconfig fieldExpr="active" />
+        <fieldconfig fieldExpr="deaths" />
+        <fieldconfig fieldExpr="recovered" />
+        <fieldconfig fieldExpr="date" />
+    </fields>
+  </class>
+
+    <class className="org.intermine.model.bio.Gene">
     <fields>
       <fieldconfig fieldExpr="primaryIdentifier"/>
       <fieldconfig fieldExpr="secondaryIdentifier"/>
@@ -58,6 +68,13 @@
       <fieldconfig fieldExpr="chromosomeLocation.start" showInInlineCollection="false" showInSummary="false" />
       <fieldconfig fieldExpr="chromosomeLocation.end" showInInlineCollection="false" showInSummary="false" />
       <fieldconfig fieldExpr="organism.shortName" />
+    </fields>
+  </class>
+
+  <class className="org.intermine.model.bio.GeoLocation">
+    <fields>
+        <fieldconfig fieldExpr="state"/>
+        <fieldconfig fieldExpr="country"/>
     </fields>
   </class>
 
