@@ -11,7 +11,7 @@
     <source name="covid-gff" type="gff">
       <property name="gff3.taxonId" value="2697049"/>
       <property name="gff3.seqClsName" value="Strain"/>
-      <property name="reactome.datasourcename" value="NCBI"/>
+      <property name="gff3.datasourcename" value="NCBI"/>
       <property name="gff3.dataSetTitle" value="Reference Sequence"/>
       <property name="src.data.dir" location="/micklem/data/covid/gff/"/>
     </source>
@@ -28,7 +28,7 @@
       <property name="fasta.dataSetTitle" value="UniProt data set"/>
       <property name="fasta.dataSourceName" value="UniProt"/>
       <property name="src.data.dir" location="/micklem/data/covid/uniprot"/>
-      <property name="fasta.includes" value="coronavirus.fasta"/>
+      <property name="fasta.includes" value="covid-19.fasta"/>
       <property name="fasta.sequenceType" value="protein" />
       <property name="fasta.loaderClassName"
                 value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
