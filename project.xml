@@ -2,18 +2,116 @@
   <property name="target.model" value="genomic"/>
   <property name="common.os.prefix" value="common"/>
   <sources>
+<!--
+    <source name="ncbi-gene" type="ncbi-gene">
+      <property name="src.data.dir" location="/micklem/data/ncbi/current/"/>
+      <property name="organisms" value="9606"/>
+-->    
+
+    <source name="covid-gff" type="gff">
+      <property name="gff3.taxonId" value="2697049"/>
+      <property name="gff3.seqClsName" value="Strain"/>
+      <property name="reactome.datasourcename" value="NCBI"/>
+      <property name="gff3.dataSetTitle" value="Reference Sequence"/>
+      <property name="src.data.dir" location="/micklem/data/covid/gff/"/>
+    </source>
+
+    <source name="uniprot" type="uniprot">
+      <property name="uniprot.organisms" value="2697049"/>
+      <property name="src.data.dir" location="/micklem/data/covid/uniprot"/>
+    </source>
+
+    <source name="uniprot-fasta" type="fasta">
+      <property name="fasta.taxonId" value="2697049"/>
+      <property name="fasta.className" value="org.intermine.model.bio.Protein"/>
+      <property name="fasta.classAttribute" value="primaryAccession"/>
+      <property name="fasta.dataSetTitle" value="UniProt data set"/>
+      <property name="fasta.dataSourceName" value="UniProt"/>
+      <property name="src.data.dir" location="/micklem/data/covid/uniprot"/>
+      <property name="fasta.includes" value="coronavirus.fasta"/>
+      <property name="fasta.sequenceType" value="protein" />
+      <property name="fasta.loaderClassName"
+                value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
+    </source>
+
+    <source name="covid-fasta" type="fasta">
+      <property name="fasta.taxonId" value="2697049"/>
+      <property name="fasta.dataSetTitle" value="NCBI covid"/>
+      <property name="fasta.dataSourceName" value="NCBI"/>
+      <property name="fasta.className" value="org.intermine.model.bio.Region"/>
+      <property name="fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="fasta.includes" value="ncbi.fasta"/>
+      <property name="src.data.dir" location="/micklem/data/covid/fasta"/>
+    </source>
+
     <source name="daily-reports" type="gisaid-csv">
       <property name="dataSourceName" value="GISAID"/>
       <property name="dataSetTitle" value="GISAID Daily Reports"/>
       <property name="src.data.dir" location="/micklem/data/covid/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"/>
       <property name="src.data.dir.includes" value="*.csv"/>
     </source>
+
+
+ <!-- has to be after UniProt because only loads protein domains for loaded proteins -->
+<!--
+    <source name="protein2ipr" type="protein2ipr">
+     <property name="src.data.dir" location="/micklem/data/interpro/match_complete/current"/>
+     <property name="src.data.dir.includes" value="protein2ipr.dat"/>
+     <property name="protein2ipr.organisms" value="2697049"/>
+     <property name="osAlias" value="os.production"/>
+    </source>
+-->
+    <source name="so" type="so">
+      <property name="src.data.file" location="so.obo"/>
+    </source>
+    <source name="go" type="go">
+      <property name="src.data.file" location="/micklem/data/go-annotation/current/go-basic.obo"/>
+    </source>
+    <source name="go-annotation" type="go-annotation">
+      <property name="src.data.dir" location="/micklem/data/go-annotation/flymine/flybase"/>
+      <property name="ontologyPrefix" value="GO"/>
+    </source>
+
+
+    <source name="interpro-go" type="interpro-go">
+      <property name="src.data.dir" location="/micklem/data/interpro/ontology/current"/>
+    </source>
+
+    <source name="entrez-organism" type="entrez-organism">
+      <property name="src.data.file" location="organisms.xml"/>
+    </source>
+<!--
+    <source name="flymine-static" type="flymine-static" version="4.0.0">
+      <property name="src.data.file" location="/micklem/data/flymine/datasets/current/datasets.xml"/>
+    </source>
+   
+ <source name="update-data-sources" type="update-data-sources">
+      <property name="src.data.file" location="datasources.xml"/>
+      <property name="dataSourceFile" value="/micklem/data/uniprot/xrefs/current/dbxref.txt"/>
+    </source>
+-->
+    <source name="update-publications" type="update-publications">
+      <property name="src.data.file" location="publications.xml"/>
+      <property name="loadFullRecord" value="true"/>
+    </source>
+
   </sources>
 
   <post-processing>
-
-
-
+  <post-process name="create-utr-references"/>
+    <post-process name="create-references" />
+    <post-process name="make-spanning-locations"/>
+    <post-process name="create-chromosome-locations-and-lengths"/>
+    <post-process name="create-intergenic-region-features"/>
+    <post-process name="transfer-sequences"/>
+<!--    <post-process name="populate-child-features"/> -->
+    <post-process name="do-sources" />
+    <post-process name="create-location-overlap-index"/>
+    <post-process name="create-overlap-view" />
+    <post-process name="create-attribute-indexes"/>
+    <post-process name="summarise-objectstore"/>
+    <post-process name="create-autocomplete-index"/>
+    <post-process name="create-search-index"/>
   </post-processing>
 
 </project>
