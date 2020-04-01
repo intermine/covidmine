@@ -67,11 +67,13 @@
     <source name="go" type="go">
       <property name="src.data.file" location="/micklem/data/go-annotation/current/go-basic.obo"/>
     </source>
-    <source name="go-annotation" type="go-annotation">
-      <property name="src.data.dir" location="/micklem/data/go-annotation/flymine/flybase"/>
-      <property name="ontologyPrefix" value="GO"/>
-    </source>
 
+<!--
+    <source name="go-annotation" type="go-annotation">
+      <property name="src.data.dir" location="/micklem/data/go-annotation/current/human" />
+      <property name="src.data.includes" value="**/gene_association*" />
+    </source>
+-->
 
     <source name="interpro-go" type="interpro-go">
       <property name="src.data.dir" location="/micklem/data/interpro/ontology/current"/>
