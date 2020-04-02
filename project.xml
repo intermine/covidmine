@@ -34,6 +34,21 @@
                 value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
     </source>
 
+
+    <source name="uniprot-varsplic-fasta" type="fasta">
+      <property name="fasta.taxonId" value="2697049"/>
+      <property name="fasta.className" value="org.intermine.model.bio.Protein"/>
+      <property name="fasta.classAttribute" value="primaryAccession"/>
+      <property name="fasta.dataSetTitle" value="UniProt data set"/>
+      <property name="fasta.dataSourceName" value="UniProt"/>
+      <property name="src.data.dir" location="/micklem/data/covid/uniprot"/>
+      <property name="fasta.includes" value="covid-19_varsplic.fasta"/>
+      <property name="fasta.sequenceType" value="protein" />
+      <property name="fasta.loaderClassName"
+                value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
+    </source>
+
+
     <source name="covid-fasta" type="fasta">
       <property name="fasta.taxonId" value="2697049"/>
       <property name="fasta.dataSetTitle" value="NCBI covid"/>
