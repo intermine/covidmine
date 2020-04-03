@@ -8,6 +8,17 @@
       <property name="organisms" value="9606"/>
 -->    
 
+    <source name="so" type="so">
+      <property name="src.data.file" location="so.obo"/>
+    </source>
+    <source name="go" type="go">
+      <property name="src.data.file" location="/micklem/data/go-annotation/current/go-basic.obo"/>
+    </source>
+
+    <source name="interpro-go" type="interpro-go">
+      <property name="src.data.dir" location="/micklem/data/interpro/ontology/current"/>
+    </source>
+
     <source name="covid-gff" type="gff">
       <property name="gff3.taxonId" value="2697049"/>
       <property name="gff3.seqClsName" value="Strain"/>
@@ -64,34 +75,6 @@
       <property name="dataSetTitle" value="GISAID Daily Reports"/>
       <property name="src.data.dir" location="/micklem/data/covid/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"/>
       <property name="src.data.dir.includes" value="*.csv"/>
-    </source>
-
-
- <!-- has to be after UniProt because only loads protein domains for loaded proteins -->
-<!--
-    <source name="protein2ipr" type="protein2ipr">
-     <property name="src.data.dir" location="/micklem/data/interpro/match_complete/current"/>
-     <property name="src.data.dir.includes" value="protein2ipr.dat"/>
-     <property name="protein2ipr.organisms" value="2697049"/>
-     <property name="osAlias" value="os.production"/>
-    </source>
--->
-    <source name="so" type="so">
-      <property name="src.data.file" location="so.obo"/>
-    </source>
-    <source name="go" type="go">
-      <property name="src.data.file" location="/micklem/data/go-annotation/current/go-basic.obo"/>
-    </source>
-
-<!--
-    <source name="go-annotation" type="go-annotation">
-      <property name="src.data.dir" location="/micklem/data/go-annotation/current/human" />
-      <property name="src.data.includes" value="**/gene_association*" />
-    </source>
--->
-
-    <source name="interpro-go" type="interpro-go">
-      <property name="src.data.dir" location="/micklem/data/interpro/ontology/current"/>
     </source>
 
     <source name="entrez-organism" type="entrez-organism">
