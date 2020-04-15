@@ -39,6 +39,7 @@ sequence_feature
 sequence_variant
 snRNA
 snoRNA
+stem_loop
 TF_binding_site
 tRNA
 three_prime_UTR
