@@ -64,7 +64,7 @@
       <property name="ncbi-covid.taxonId" value="2697049"/>
       <property name="ncbi-covid.dataSetTitle" value="NCBI covid"/>
       <property name="ncbi-covid.dataSourceName" value="NCBI"/>
-      <property name="ncbi-covid.className" value="org.intermine.model.bio.Region"/>
+      <property name="ncbi-covid.className" value="org.intermine.model.bio.Genome"/>
       <property name="ncbi-covid.classAttribute" value="primaryIdentifier"/>
       <property name="ncbi-covid.includes" value="ncbi.fasta"/>   
       <property name="src.data.dir" location="/micklem/data/covid/fasta"/>
