@@ -59,18 +59,19 @@
                 value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
     </source>
 
-
-    <source name="covid-fasta" type="fasta">
-      <property name="fasta.taxonId" value="2697049"/>
-      <property name="fasta.dataSetTitle" value="NCBI covid"/>
-      <property name="fasta.dataSourceName" value="NCBI"/>
-      <property name="fasta.className" value="org.intermine.model.bio.Region"/>
-      <property name="fasta.classAttribute" value="primaryIdentifier"/>
-      <property name="fasta.includes" value="ncbi.fasta"/>
+    <source name="ncbi-covid" type="ncbi-covid" version="4.1.3">
+      <property name="ncbi-covid.taxonId" value="2697049"/>
+      <property name="ncbi-covid.dataSetTitle" value="NCBI covid"/>
+      <property name="ncbi-covid.dataSourceName" value="NCBI"/>
+      <property name="ncbi-covid.className" value="org.intermine.model.bio.Genome"/>
+      <property name="ncbi-covid.classAttribute" value="primaryIdentifier"/>
+      <property name="ncbi-covid.includes" value="ncbi.fasta"/>   
       <property name="src.data.dir" location="/micklem/data/covid/fasta"/>
+      <property name="ncbi-covid.loaderClassName"
+                value="org.intermine.bio.dataconversion.NcbiCovidFastaConverter"/>
     </source>
 
-    <source name="daily-reports" type="gisaid-csv">
+    <source name="daily-reports" type="gisaid-csv" version="4.1.3">
       <property name="dataSourceName" value="GISAID"/>
       <property name="dataSetTitle" value="GISAID Daily Reports"/>
       <property name="src.data.dir" location="/micklem/data/covid/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"/>
