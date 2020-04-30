@@ -63,7 +63,6 @@ fi
 
 function swap {
 # to change build db
-echo "AO!"
 cd $PDIR
 pwd
 USE=gin
@@ -72,7 +71,6 @@ if [ $CURR = "gin" ]
 then
 USE=tonic
 fi
-echo $USE
 export DD=`date "+%d-%m-%Y %H.%M"`
 sed -i 's/preAlpha.*/preAlpha \<i\>'"$USE"'\<\/i\> '"$DD"'/' $COV.$USE
 
@@ -84,25 +82,42 @@ echo $CURR" -> "$USE
 }
 
 function getSources {
-# do the mirroring!
-# TODO: avoid the gff expansion if no changes
+# get the data
+# TODO: fasta ncbi
+#       https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType_s=Nucleotide&VirusLineage_ss=SARS-CoV-2,%20taxid:2697049
 
 FTPROT=ftp://ftp.uniprot.org/pub/databases/uniprot/pre_release/
-UNIDIR=$DATADIR/uniprot
-FASDIR=$DATADIR/fasta
 GFFDIR=$DATADIR/gff
+GFFILE=GCF_009858895.2_ASM985889v3_genomic.gff
+OWIDAT=https://covid.ourworldindata.org/data/owid-covid-data.csv
 
-GFFILE=GCF_009858895.2_ASM985889v3_genomic
-
-# fix for now
+# GFF
+# keeping a mirror of the zipped file
 cd $GFFDIR/mirror
-wget -N https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.gff.gz
-mv $GFFDIR/GCF_009858895.2_ASM985889v3_genomic.gff $GFFDIR/oldies/GCF_009858895.2_ASM985889v3_genomic.gff.`date "+%y%m%d.%H%M"`
-gzip -d -c *.gff.gz > $GFFDIR/GCF_009858895.2_ASM985889v3_genomic.gff
+B4=`stat $GFFILE.gz | grep Change`
 
-cd $UNIDIR
+wget -N https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/$GFFILE.gz
+A3=`stat $GFFILE.gz | grep Change`
+
+if [ $B4 != $A3 ]
+then
+mv $GFFDIR/$GFFILE $GFFDIR/oldies/$GFFILE.`date "+%y%m%d.%H%M"`
+gzip -d -c *.gff.gz > $GFFDIR/$GFFILE
+echo "$GFFILE updated!"
+fi
+
+#
+# UNIPROT
+#
+cd $DATADIR/uniprot
 wget -N $FTPROT/*.fasta
 wget -N $FTPROT/covid-19.xml
+
+#
+# OWID
+#
+cd $DATADIR/OWID
+wget -N $OWIDAT
 
 }
 
