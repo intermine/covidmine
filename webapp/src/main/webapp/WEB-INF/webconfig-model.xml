@@ -49,10 +49,9 @@
   <class className="org.intermine.model.bio.Distribution">
     <fields>
         <fieldconfig fieldExpr="date" />
-        <fieldconfig fieldExpr="totalConfirmed" />
-        <fieldconfig fieldExpr="totalActive" />
+        <fieldconfig fieldExpr="totalCases" />
         <fieldconfig fieldExpr="totalDeaths" />
-        <fieldconfig fieldExpr="totalRecovered" />
+        <fieldconfig fieldExpr="geoLocation.country" />
     </fields>
   </class>
 

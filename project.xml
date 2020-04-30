@@ -71,13 +71,20 @@
                 value="org.intermine.bio.dataconversion.NcbiCovidFastaConverter"/>
     </source>
 
+<!--
     <source name="daily-reports" type="gisaid-csv" version="4.1.3">
       <property name="dataSourceName" value="GISAID"/>
       <property name="dataSetTitle" value="GISAID Daily Reports"/>
       <property name="src.data.dir" location="/micklem/data/covid/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"/>
       <property name="src.data.dir.includes" value="*.csv"/>
     </source>
-
+-->
+    <source name="owid-csv" type="owid-csv" version="4.1.3">
+      <property name="dataSourceName" value="OWID"/>
+      <property name="dataSetTitle" value="Our World in Data COVID-19 dataset"/>
+      <property name="src.data.dir" location="/micklem/data/covid/OWID"/>
+      <property name="src.data.dir.includes" value="*.csv"/>
+    </source>
     <source name="entrez-organism" type="entrez-organism">
       <property name="src.data.file" location="organisms.xml"/>
     </source>
