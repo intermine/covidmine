@@ -3,11 +3,14 @@
 # usage: docovid.sh          batch mode
 #        docovid.sh -i       interactive (crude step by step) mode
 #
+# TODO: exit if wrong switchs combination
+#
 
 # default settings: edit with care
 INTERACT=n       # y: step by step interaction
 SWAP=y           # n: don't swap db
 GETDATA=y        # n: don't update uniprot and gff
+DSONLY=n         # y: just update the sources (don't build)
 
 progname=$0
 
@@ -15,8 +18,9 @@ function usage () {
 	cat <<EOF
 
 Usage:
-$progname [-d] [-i] [-s]
-	-d: no checking of sources (uniprot and gff) for update
+$progname [-S] [-d] [-i] [-s]
+  -S: just get the sources (no build)
+  -d: no checking of sources (uniprot and gff) for update
 	-i: interactive mode
 	-s: no swapping of build db (for example after a build fail)
 	-v: verbode mode
@@ -33,8 +37,9 @@ EOF
 }
 
 
-while getopts "dis" opt; do
+while getopts "Sdis" opt; do
    case $opt in
+  S )  echo "- Just updating sources (no build)" ; DSONLY=y;;
 	d )  echo "- Don't mirror sources" ; GETDATA=n;;
 	i )  echo "- Interactive mode" ; INTERACT=y;;
         s )  echo "- Don't swap db" ; SWAP=n;;
@@ -99,7 +104,7 @@ B4=`stat $GFFILE.gz | grep Change`
 wget -N https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/$GFFILE.gz
 A3=`stat $GFFILE.gz | grep Change`
 
-if [ $B4 != $A3 ]
+if [ "$B4" != "$A3" ]
 then
 mv $GFFDIR/$GFFILE $GFFDIR/oldies/$GFFILE.`date "+%y%m%d.%H%M"`
 gzip -d -c *.gff.gz > $GFFDIR/$GFFILE
@@ -121,7 +126,16 @@ wget -N $OWIDAT
 
 }
 
+#
+# main..
+#
 
+if [ $DSONLY = "y" ]
+then
+  interact "Just update sources please"
+  getSources
+  exit;
+fi
 
 if [ $SWAP = "y" ]
 then
