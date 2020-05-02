@@ -115,8 +115,8 @@ fi
 # UNIPROT
 #
 cd $DATADIR/uniprot
-wget -N $FTPROT/*.fasta
-wget -N $FTPROT/covid-19.xml
+wget -N --tries=2 $FTPROT/*.fasta
+wget -N --tries=2 $FTPROT/covid-19.xml
 
 #
 # OWID
