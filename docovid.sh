@@ -95,6 +95,7 @@ FTPROT=ftp://ftp.uniprot.org/pub/databases/uniprot/pre_release/
 GFFDIR=$DATADIR/gff
 GFFILE=GCF_009858895.2_ASM985889v3_genomic.gff
 OWIDAT=https://covid.ourworldindata.org/data/owid-covid-data.csv
+DAYDAT=https://covidtracking.com/api/v1/states/daily.csv
 
 # GFF
 # keeping a mirror of the zipped file
@@ -123,6 +124,13 @@ wget -N --tries=2 $FTPROT/covid-19.xml
 #
 cd $DATADIR/OWID
 wget -N $OWIDAT
+
+
+#
+# daily data
+#
+cd $DATADIR/CovidTrackingProject
+wget -N $DAYDAT
 
 }
 
