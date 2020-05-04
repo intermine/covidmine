@@ -15,6 +15,10 @@
       <property name="src.data.file" location="/micklem/data/go-annotation/current/go-basic.obo"/>
     </source>
 
+    <source name="psi-mi-ontology" type="psi-mi-ontology">
+      <property name="src.data.file" location="/micklem/data/psi/ontology/current/psi-mi.obo" />
+    </source>
+
     <source name="interpro-go" type="interpro-go">
       <property name="src.data.dir" location="/micklem/data/interpro/ontology/current"/>
     </source>
@@ -70,6 +74,12 @@
       <property name="ncbi-covid.loaderClassName"
                 value="org.intermine.bio.dataconversion.NcbiCovidFastaConverter"/>
     </source>
+
+    <source name="psi-intact" type="psi">
+      <property name="src.data.dir" location="/micklem/data/covid/interactions/current" />
+      <property name="intact.organisms" value="2697049" />
+    </source>
+
 
 <!--
     <source name="daily-reports" type="gisaid-csv" version="4.1.3">
