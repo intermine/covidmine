@@ -3,11 +3,14 @@
 # usage: docovid.sh          batch mode
 #        docovid.sh -i       interactive (crude step by step) mode
 #
+# TODO: exit if wrong switchs combination
+#
 
 # default settings: edit with care
 INTERACT=n       # y: step by step interaction
 SWAP=y           # n: don't swap db
 GETDATA=y        # n: don't update uniprot and gff
+DSONLY=n         # y: just update the sources (don't build)
 
 progname=$0
 
@@ -15,8 +18,9 @@ function usage () {
 	cat <<EOF
 
 Usage:
-$progname [-d] [-i] [-s]
-	-d: no checking of sources (uniprot and gff) for update
+$progname [-S] [-d] [-i] [-s]
+  -S: just get the sources (no build)
+  -d: no checking of sources (uniprot and gff) for update
 	-i: interactive mode
 	-s: no swapping of build db (for example after a build fail)
 	-v: verbode mode
@@ -33,8 +37,9 @@ EOF
 }
 
 
-while getopts "dis" opt; do
+while getopts "Sdis" opt; do
    case $opt in
+  S )  echo "- Just updating sources (no build)" ; DSONLY=y;;
 	d )  echo "- Don't mirror sources" ; GETDATA=n;;
 	i )  echo "- Interactive mode" ; INTERACT=y;;
         s )  echo "- Don't swap db" ; SWAP=n;;
@@ -63,7 +68,6 @@ fi
 
 function swap {
 # to change build db
-echo "AO!"
 cd $PDIR
 pwd
 USE=gin
@@ -72,7 +76,6 @@ if [ $CURR = "gin" ]
 then
 USE=tonic
 fi
-echo $USE
 export DD=`date "+%d-%m-%Y %H.%M"`
 sed -i 's/preAlpha.*/preAlpha \<i\>'"$USE"'\<\/i\> '"$DD"'/' $COV.$USE
 
@@ -84,29 +87,55 @@ echo $CURR" -> "$USE
 }
 
 function getSources {
-# do the mirroring!
-# TODO: avoid the gff expansion if no changes
+# get the data
+# TODO: fasta ncbi
+#       https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType_s=Nucleotide&VirusLineage_ss=SARS-CoV-2,%20taxid:2697049
 
 FTPROT=ftp://ftp.uniprot.org/pub/databases/uniprot/pre_release/
-UNIDIR=$DATADIR/uniprot
-FASDIR=$DATADIR/fasta
 GFFDIR=$DATADIR/gff
+GFFILE=GCF_009858895.2_ASM985889v3_genomic.gff
+OWIDAT=https://covid.ourworldindata.org/data/owid-covid-data.csv
 
-GFFILE=GCF_009858895.2_ASM985889v3_genomic
-
-# fix for now
+# GFF
+# keeping a mirror of the zipped file
 cd $GFFDIR/mirror
-wget -N https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.gff.gz
-mv $GFFDIR/GCF_009858895.2_ASM985889v3_genomic.gff $GFFDIR/oldies/GCF_009858895.2_ASM985889v3_genomic.gff.`date "+%y%m%d.%H%M"`
-gzip -d -c *.gff.gz > $GFFDIR/GCF_009858895.2_ASM985889v3_genomic.gff
+B4=`stat $GFFILE.gz | grep Change`
 
-cd $UNIDIR
-wget -N $FTPROT/*.fasta
-wget -N $FTPROT/covid-19.xml
+wget -N https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/$GFFILE.gz
+A3=`stat $GFFILE.gz | grep Change`
+
+if [ "$B4" != "$A3" ]
+then
+mv $GFFDIR/$GFFILE $GFFDIR/oldies/$GFFILE.`date "+%y%m%d.%H%M"`
+gzip -d -c *.gff.gz > $GFFDIR/$GFFILE
+echo "$GFFILE updated!"
+fi
+
+#
+# UNIPROT
+#
+cd $DATADIR/uniprot
+wget -N --tries=2 $FTPROT/*.fasta
+wget -N --tries=2 $FTPROT/covid-19.xml
+
+#
+# OWID
+#
+cd $DATADIR/OWID
+wget -N $OWIDAT
 
 }
 
+#
+# main..
+#
 
+if [ $DSONLY = "y" ]
+then
+  interact "Just update sources please"
+  getSources
+  exit;
+fi
 
 if [ $SWAP = "y" ]
 then
