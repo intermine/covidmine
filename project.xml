@@ -85,6 +85,13 @@
       <property name="src.data.dir" location="/micklem/data/covid/OWID"/>
       <property name="src.data.dir.includes" value="*.csv"/>
     </source>
+
+    <source name="covidtracking-csv" type="covidtracking-csv" version="4.1.3">
+      <property name="dataSourceName" value="COVIDTrackingProject"/>
+      <property name="dataSetTitle" value="The COVID Tracking Project DataSet"/>
+      <property name="src.data.dir" location="/micklem/data/covid/CovidTrackingProject"/>
+    </source>
+
     <source name="entrez-organism" type="entrez-organism">
       <property name="src.data.file" location="organisms.xml"/>
     </source>
