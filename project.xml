@@ -80,15 +80,6 @@
       <property name="intact.organisms" value="2697049" />
     </source>
 
-
-<!--
-    <source name="daily-reports" type="gisaid-csv" version="4.1.3">
-      <property name="dataSourceName" value="GISAID"/>
-      <property name="dataSetTitle" value="GISAID Daily Reports"/>
-      <property name="src.data.dir" location="/micklem/data/covid/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"/>
-      <property name="src.data.dir.includes" value="*.csv"/>
-    </source>
--->
     <source name="owid-csv" type="owid-csv" version="4.1.3">
       <property name="src.data.dir" location="/micklem/data/covid/OWID"/>
       <property name="src.data.dir.includes" value="*.csv"/>
