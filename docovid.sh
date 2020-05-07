@@ -20,7 +20,7 @@ function usage () {
 Usage:
 $progname [-S] [-d] [-i] [-s]
   -S: just get the sources (no build)
-  -d: no checking of sources (uniprot and gff) for update
+  -d: no checking of sources for update
 	-i: interactive mode
 	-s: no swapping of build db (for example after a build fail)
 	-v: verbode mode
