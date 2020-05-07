@@ -32,7 +32,7 @@
     </source>
 
     <source name="uniprot" type="uniprot">
-      <property name="uniprot.organisms" value="2697049"/>
+      <property name="uniprot.organisms" value="9606 2697049"/>
       <property name="src.data.dir" location="/micklem/data/covid/uniprot"/>
     </source>
 
@@ -93,12 +93,12 @@
     <source name="entrez-organism" type="entrez-organism">
       <property name="src.data.file" location="organisms.xml"/>
     </source>
-<!--
+
     <source name="covidmine-static" type="covidmine-static" version="4.1.3">
       <property name="src.data.file" location="/micklem/data/covid/datasets/datasets.xml"/>
     </source>
-   
- <source name="update-data-sources" type="update-data-sources">
+   <!--
+    <source name="update-data-sources" type="update-data-sources">
       <property name="src.data.file" location="datasources.xml"/>
       <property name="dataSourceFile" value="/micklem/data/uniprot/xrefs/current/dbxref.txt"/>
     </source>
