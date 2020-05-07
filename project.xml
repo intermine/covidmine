@@ -94,8 +94,8 @@
       <property name="src.data.file" location="organisms.xml"/>
     </source>
 <!--
-    <source name="flymine-static" type="flymine-static" version="4.0.0">
-      <property name="src.data.file" location="/micklem/data/flymine/datasets/current/datasets.xml"/>
+    <source name="covidmine-static" type="covidmine-static" version="4.1.3">
+      <property name="src.data.file" location="/micklem/data/covid/datasets/datasets.xml"/>
     </source>
    
  <source name="update-data-sources" type="update-data-sources">
