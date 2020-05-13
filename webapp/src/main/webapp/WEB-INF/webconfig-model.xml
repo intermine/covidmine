@@ -16,6 +16,15 @@
     </fields>
   </class>
 
+  <class className="org.intermine.model.bio.Cases">
+    <fields>
+      <fieldconfig fieldExpr="date" />
+      <fieldconfig fieldExpr="totalConfirmed" />
+      <fieldconfig fieldExpr="totalDeaths" />
+      <fieldconfig fieldExpr="geoLocation.country" />
+    </fields>
+  </class>
+
   <class className="org.intermine.model.bio.Chromosome">
     <fields>
       <fieldconfig fieldExpr="primaryIdentifier"/>
@@ -46,16 +55,7 @@
     <tabledisplayer src="/model/dataSourceShort.jsp"/>
   </class>
 
-  <class className="org.intermine.model.bio.Distribution">
-    <fields>
-        <fieldconfig fieldExpr="date" />
-        <fieldconfig fieldExpr="totalCases" />
-        <fieldconfig fieldExpr="totalDeaths" />
-        <fieldconfig fieldExpr="geoLocation.country" />
-    </fields>
-  </class>
-
-    <class className="org.intermine.model.bio.Gene">
+  <class className="org.intermine.model.bio.Gene">
     <fields>
       <fieldconfig fieldExpr="primaryIdentifier"/>
       <fieldconfig fieldExpr="secondaryIdentifier"/>
