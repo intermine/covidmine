@@ -153,7 +153,7 @@ cd $SMSDIR
 python3 sitemap.py "https://test.intermine.org/covidmine" "" "daily"
 
 cp sitemap0.xml $MAPDIR
-cp sitemap-index.xml SMAPDIR
+cp sitemap-index.xml $MAPDIR
 
 cd $RETDIR
 
