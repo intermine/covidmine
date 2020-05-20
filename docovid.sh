@@ -154,8 +154,9 @@ python3 sitemap.py "https://test.intermine.org/covidmine" "" "daily"
 
 cp sitemap0.xml $MAPDIR
 cp sitemap-index.xml $MAPDIR
+
 cd $MAPDIR
-git add sitema0.xml sitemap-index.xml
+git add sitemap0.xml sitemap-index.xml
 git commit -m "auto"
 git push origin
 
