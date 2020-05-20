@@ -59,7 +59,7 @@ PDIR=$HOME/.intermine
 COVDIR=/micklem/data/thalemine/git/covidmine
 DATADIR=/micklem/data/covid
 SMSDIR=/micklem/data/thalemine/git/intermine-sitemaps
-MAPDIR=/var/www/html
+MAPDIR=/micklem/data/thalemine/git/covidmine-sitemap
 
 
 function interact {
@@ -154,6 +154,10 @@ python3 sitemap.py "https://test.intermine.org/covidmine" "" "daily"
 
 cp sitemap0.xml $MAPDIR
 cp sitemap-index.xml $MAPDIR
+cd $MAPDIR
+git add sitema0.xml sitemap-index.xml
+git commit -m "auto"
+git push origin
 
 cd $RETDIR
 
