@@ -11,6 +11,7 @@ INTERACT=n       # y: step by step interaction
 SWAP=y           # n: don't swap db
 GETDATA=y        # n: don't update uniprot and gff
 DSONLY=n         # y: just update the sources (don't build)
+MAPONLY=n        # y: just do the sitemap (just that!)
 
 progname=$0
 
@@ -18,7 +19,8 @@ function usage () {
 	cat <<EOF
 
 Usage:
-$progname [-S] [-d] [-i] [-s]
+$progname [-S] [-M] [-d] [-i] [-s]
+  -M: just do the sitemap
   -S: just get the sources (no build)
   -d: no checking of sources for update
 	-i: interactive mode
@@ -37,23 +39,28 @@ EOF
 }
 
 
-while getopts "Sdis" opt; do
+while getopts "SMdis" opt; do
    case $opt in
-  S )  echo "- Just updating sources (no build)" ; DSONLY=y;;
-	d )  echo "- Don't mirror sources" ; GETDATA=n;;
-	i )  echo "- Interactive mode" ; INTERACT=y;;
+        S )  echo "- Just updating sources (no build)" ; DSONLY=y;;
+        M )  echo "- Just do the sitemap" ; MAPONLY=y;;
+	      d )  echo "- Don't mirror sources" ; GETDATA=n;;
+	      i )  echo "- Interactive mode" ; INTERACT=y;;
         s )  echo "- Don't swap db" ; SWAP=n;;
         h )  usage ;;
-	\?)  usage ;;
+	      \?)  usage ;;
    esac
 done
 
 shift $(($OPTIND - 1))
 
-PDIR=$HOME/.intermine
 COV=covidmine.properties
+
+PDIR=$HOME/.intermine
 COVDIR=/micklem/data/thalemine/git/covidmine
 DATADIR=/micklem/data/covid
+SMSDIR=/micklem/data/thalemine/git/intermine-sitemaps
+MAPDIR=/micklem/data/thalemine/git/covidmine-sitemap
+
 
 function interact {
 # if testing, wait here before continuing
@@ -134,6 +141,30 @@ wget -N $DAYDAT
 
 }
 
+
+
+function makeSitemaps {
+# build and position the sitemaps
+#
+
+RETDIR=`pwd`
+
+cd $SMSDIR
+python3 sitemap.py "https://test.intermine.org/covidmine" "" "daily"
+
+cp sitemap0.xml $MAPDIR
+cp sitemap-index.xml $MAPDIR
+
+cd $MAPDIR
+git add sitemap0.xml sitemap-index.xml
+git commit -m "auto"
+git push origin
+
+cd $RETDIR
+
+}
+
+
 #
 # main..
 #
@@ -142,6 +173,13 @@ if [ $DSONLY = "y" ]
 then
   interact "Just update sources please"
   getSources
+  exit;
+fi
+
+if [ $MAPONLY = "y" ]
+then
+  interact "Just make the sitemaps please"
+  makeSitemaps
   exit;
 fi
 
@@ -178,3 +216,6 @@ interact "Deploying"
 
 ./gradlew cargoRedeployRemote
 
+interact "Making the sitemaps"
+
+makeSitemaps
