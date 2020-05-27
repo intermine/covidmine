@@ -30,7 +30,7 @@
 
     <source name="covid-gff" type="gff">
       <property name="gff3.taxonId" value="2697049"/>
-      <property name="gff3.seqClsName" value="Strain"/>
+      <property name="gff3.seqClsName" value="Genome"/>
       <property name="gff3.dataSourceName" value="NCBI Virus"/>
       <property name="gff3.dataSetTitle" value="Reference Sequence"/>
       <property name="src.data.dir" location="/micklem/data/covid/gff/"/>
