@@ -10,9 +10,14 @@
 
     <source name="so" type="so">
       <property name="src.data.file" location="so.obo"/>
+      <property name="dataset" value="The Sequence Ontology"/>
+      <property name="datasource" value="Sequence Ontology"/>
     </source>
+
     <source name="go" type="go">
       <property name="src.data.file" location="/micklem/data/go-annotation/current/go-basic.obo"/>
+      <property name="dataset" value="The Gene Ontology"/>
+      <property name="datasource" value="The Gene Ontology Consortium"/>
     </source>
 
     <source name="psi-mi-ontology" type="psi-mi-ontology">
@@ -26,13 +31,13 @@
     <source name="covid-gff" type="gff">
       <property name="gff3.taxonId" value="2697049"/>
       <property name="gff3.seqClsName" value="Strain"/>
-      <property name="gff3.datasourcename" value="NCBI Virus"/>
+      <property name="gff3.dataSourceName" value="NCBI Virus"/>
       <property name="gff3.dataSetTitle" value="Reference Sequence"/>
       <property name="src.data.dir" location="/micklem/data/covid/gff/"/>
     </source>
 
     <source name="uniprot" type="uniprot">
-      <property name="uniprot.organisms" value="9606 2697049"/>
+      <property name="uniprot.organisms" value="2697049"/>
       <property name="src.data.dir" location="/micklem/data/covid/uniprot"/>
     </source>
 
