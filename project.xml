@@ -68,7 +68,7 @@
                 value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
     </source>
 
-    <source name="ncbi-covid" type="ncbi-covid" version="4.1.3">
+    <source name="ncbi-covid" type="ncbi-covid" version="1.0.0">
       <property name="ncbi-covid.taxonId" value="2697049"/>
       <property name="ncbi-covid.dataSetTitle" value="NCBI covid"/>
       <property name="ncbi-covid.dataSourceName" value="NCBI Virus"/>
@@ -85,12 +85,12 @@
       <property name="intact.organisms" value="2697049" />
     </source>
 
-    <source name="owid-csv" type="owid-csv" version="4.1.3">
+    <source name="owid-csv" type="owid-csv" version="1.0.0">
       <property name="src.data.dir" location="/micklem/data/covid/OWID"/>
       <property name="src.data.dir.includes" value="*.csv"/>
     </source>
 
-    <source name="covidtracking-csv" type="covidtracking-csv" version="4.1.3">
+    <source name="covidtracking-csv" type="covidtracking-csv" version="1.0.0">
       <property name="src.data.dir" location="/micklem/data/covid/CovidTrackingProject"/>
       <property name="src.data.dir.includes" value="*.csv"/>
     </source>
@@ -99,7 +99,7 @@
       <property name="src.data.file" location="organisms.xml"/>
     </source>
 
-    <source name="covidmine-static" type="covidmine-static" version="4.1.3">
+    <source name="covidmine-static" type="covidmine-static" version="1.0.0">
       <property name="src.data.file" location="/micklem/data/covid/datasets/datasets.xml"/>
     </source>
    <!--
