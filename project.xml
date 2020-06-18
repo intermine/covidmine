@@ -13,13 +13,13 @@
       <property name="dataset" value="The Sequence Ontology"/>
       <property name="datasource" value="Sequence Ontology"/>
     </source>
-
+<!--
     <source name="go" type="go">
       <property name="src.data.file" location="/micklem/data/go-annotation/current/go-basic.obo"/>
       <property name="dataset" value="The Gene Ontology"/>
       <property name="datasource" value="The Gene Ontology Consortium"/>
     </source>
-
+-->
     <source name="psi-mi-ontology" type="psi-mi-ontology">
       <property name="src.data.file" location="/micklem/data/psi/ontology/current/psi-mi.obo" />
     </source>
@@ -42,19 +42,19 @@
     </source>
 
     <source name="uniprot-fasta" type="fasta">
-      <property name="fasta.taxonId" value="2697049"/>
+      <property name="fasta.taxonId" value="9606 2697049 694009"/>
       <property name="fasta.className" value="org.intermine.model.bio.Protein"/>
       <property name="fasta.classAttribute" value="primaryAccession"/>
       <property name="fasta.dataSetTitle" value="UniProt data set"/>
       <property name="fasta.dataSourceName" value="UniProt"/>
       <property name="src.data.dir" location="/micklem/data/covid/uniprot"/>
-      <property name="fasta.includes" value="covid-19.fasta"/>
+      <property name="fasta.includes" value="*.fasta"/>
       <property name="fasta.sequenceType" value="protein" />
       <property name="fasta.loaderClassName"
                 value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
     </source>
 
-
+<!--
     <source name="uniprot-varsplic-fasta" type="fasta">
       <property name="fasta.taxonId" value="2697049"/>
       <property name="fasta.className" value="org.intermine.model.bio.Protein"/>
@@ -67,6 +67,7 @@
       <property name="fasta.loaderClassName"
                 value="org.intermine.bio.dataconversion.UniProtFastaLoaderTask"/>
     </source>
+-->
 
     <source name="ncbi-covid" type="ncbi-covid" version="1.0.0">
       <property name="ncbi-covid.taxonId" value="2697049"/>
