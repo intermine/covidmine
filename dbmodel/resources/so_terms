@@ -22,6 +22,7 @@ golden_path_fragment
 intergenic_region
 intron
 mRNA
+mature_protein_region_of_CDS
 miRNA
 microarray_oligo
 natural_transposable_element
