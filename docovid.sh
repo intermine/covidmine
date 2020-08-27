@@ -56,10 +56,13 @@ shift $(($OPTIND - 1))
 COV=covidmine.properties
 
 PDIR=$HOME/.intermine
-COVDIR=/micklem/data/thalemine/git/covidmine
+#COVDIR=/micklem/data/thalemine/git/covidmine
+COVDIR=`pwd`
 DATADIR=/micklem/data/covid
-SMSDIR=/micklem/data/thalemine/git/intermine-sitemaps
-MAPDIR=/micklem/data/thalemine/git/covidmine-sitemap
+#SMSDIR=/micklem/data/thalemine/git/intermine-sitemaps
+SMSDIR=/code/intermine-sitemaps
+#MAPDIR=/micklem/data/thalemine/git/covidmine-sitemap
+MAPDIR=/code/covidmine-sitemap
 
 
 function interact {
