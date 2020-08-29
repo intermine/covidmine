@@ -13,6 +13,9 @@ GETDATA=y        # n: don't update uniprot and gff
 DSONLY=n         # y: just update the sources (don't build)
 MAPONLY=n        # y: just do the sitemap (just that!)
 
+# tmp until we fix .bashrc
+export JAVA_HOME=""
+
 progname=$0
 
 function usage () {
