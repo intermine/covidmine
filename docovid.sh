@@ -60,7 +60,7 @@ COV=covidmine.properties
 
 PDIR=$HOME/.intermine
 #COVDIR=/micklem/data/thalemine/git/covidmine
-COVDIR=`pwd`
+COVDIR=/code/covidmine
 DATADIR=/micklem/data/covid
 #SMSDIR=/micklem/data/thalemine/git/intermine-sitemaps
 SMSDIR=/code/intermine-sitemaps
