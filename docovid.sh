@@ -209,7 +209,7 @@ interact "Building.."
 #export JAVA_HOME=""
 rm $DATADIR/dumps/cov*
 # ncbi-fasta now too big for normal setting
-export GRADLE_OPTS="-server -Xmx80G -XX:+UseParallelGC -Xms2G -XX:SoftRefLRUPolicyMSPerMB=1 -XX:MaxHeapFreeRatio=99 -Dorg.gradle.daem$
+export GRADLE_OPTS="-server -Xmx80G -XX:+UseParallelGC -Xms2G -XX:SoftRefLRUPolicyMSPerMB=1 -XX:MaxHeapFreeRatio=99 -Dorg.gradle.daemon=false"
 
 # check if success
 ./project_build -b -v localhost $DATADIR/dumps/cov\
@@ -222,7 +222,7 @@ export GRADLE_OPTS="-server -Xmx80G -XX:+UseParallelGC -Xms2G -XX:SoftRefLRUPoli
 
 interact "Deploying"
 # back to normal
-export GRADLE_OPTS="-server -Xmx20G -XX:+UseParallelGC -Xms2G -XX:SoftRefLRUPolicyMSPerMB=1 -XX:MaxHeapFreeRatio=99 -Dorg.gradle.daem$
+export GRADLE_OPTS="-server -Xmx20G -XX:+UseParallelGC -Xms2G -XX:SoftRefLRUPolicyMSPerMB=1 -XX:MaxHeapFreeRatio=99 -Dorg.gradle.daemon=false"
 
 ./gradlew cargoRedeployRemote
 
